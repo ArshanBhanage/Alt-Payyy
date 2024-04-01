@@ -41,7 +41,52 @@ class _QRImageState extends State<QRImage> {
             //     });
             //   },
             // ),
-            if (qrData != null) PrettyQrView.data(data: qrData!),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal padding
+                      child: Image.asset('lib/images/lankapay.png'),                     
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal padding
+                      child: ElevatedButton(onPressed: () => {}, child: const Text('Different QR Brand')),
+                    ),
+                  ),                  
+                ],
+              ),
+            ),
+
+            if (qrData != null) Expanded(
+              child: PrettyQrView.data(data: qrData!),
+            ),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal padding
+                      child: ElevatedButton(
+                        onPressed: () => {},
+                        child: const Text('Scan'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal padding
+                      child: ElevatedButton(
+                        onPressed: () => {},
+                        child: const Text('Cancel'),
+                      ),
+                    ),
+                  ),                  
+                ],
+              ),
+            ),
           ],
         ),
       ),
