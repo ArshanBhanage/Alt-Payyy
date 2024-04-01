@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
+import 'package:flutter_application_1/pages/customer/enter_name.dart';
+
+class ValidatePhone extends StatefulWidget {
+  final String data; // Variable to hold the passed string
+  
+  const ValidatePhone({super.key, required this.data});
+
+  @override
+  State<ValidatePhone> createState() => _ValidatePhoneState();
+}
+
+class _ValidatePhoneState extends State<ValidatePhone> {
+  String _otp = "";
+
+  void  _validatePhone(){
+    print("Hello: $_otp");
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EnterName(data: widget.data)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.grey,
+        title: const Text('Validate Phone Number'),
+      ),   
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Enter OTP',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+              ),
+            Text(
+              'OTP sent to ${widget.data}',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.normal,
+              ),
+              ),
+            const SizedBox(height: 20.0),  
+            OTPTextField(
+              length: 5,
+              width: MediaQuery.of(context).size.width,
+              fieldWidth: 80,
+              style: const TextStyle(
+                fontSize: 17
+              ),
+              textFieldAlignment: MainAxisAlignment.spaceAround,
+              fieldStyle: FieldStyle.underline,
+              onCompleted: (pin) {
+                setState(() {
+                  _otp = pin;
+                });
+              },
+            ),
+            const SizedBox(height: 20.0),
+            ElevatedButton(onPressed: () => _validatePhone(), child: const Text('Verify Phone')),
+          ],
+        ),
+      ),         
+    );
+  }
+}
