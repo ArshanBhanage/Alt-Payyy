@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/pages/customer/payment_amount.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class Dashboard extends StatefulWidget {
@@ -59,7 +60,12 @@ class _DashboardState extends State<Dashboard> {
             const SizedBox(height: 20.0),
             ElevatedButton(
                 onPressed: () => scanQR(),
-                child: const Text('Scan QR & Pay')),                                    
+                child: const Text('Scan QR & Pay')),
+            ElevatedButton(
+                onPressed: () => {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentAmount()))
+                },
+                child: const Text('New Payment')),                                                    
           ],
         ),
       ),

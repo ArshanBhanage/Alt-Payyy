@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/customer/sign_in.dart';
 import 'package:flutter_application_1/pages/customer/sign_up.dart';
-import 'package:flutter_application_1/pages/merchant/merchant_home.dart';
 
 class CustomerHome extends StatefulWidget {
   const CustomerHome({super.key});
@@ -23,7 +23,7 @@ class _CustomerHomeState extends State<CustomerHome> {
     // Navigate to merchant page
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MerchantHome()),
+      MaterialPageRoute(builder: (context) => const SignIn()),
     );
   } 
 
