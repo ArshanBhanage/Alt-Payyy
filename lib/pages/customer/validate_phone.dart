@@ -28,8 +28,7 @@ class _ValidatePhoneState extends State<ValidatePhone> {
         backgroundColor: Colors.grey,
         title: const Text('Validate Phone Number'),
       ),   
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -48,21 +47,22 @@ class _ValidatePhoneState extends State<ValidatePhone> {
               ),
               ),
             const SizedBox(height: 20.0),  
-            OTPTextField(
-              length: 5,
-              width: MediaQuery.of(context).size.width,
-              fieldWidth: 80,
-              style: const TextStyle(
-                fontSize: 17
+            Flexible(
+              child: OTPTextField(
+                  length: 5,
+                  width: MediaQuery.of(context).size.width,
+                  style: const TextStyle(
+                    fontSize: 17
+                  ),
+                  textFieldAlignment: MainAxisAlignment.spaceAround,
+                  fieldStyle: FieldStyle.underline,
+                  onCompleted: (pin) {
+                    setState(() {
+                      _otp = pin;
+                    });
+                  },
+                ),
               ),
-              textFieldAlignment: MainAxisAlignment.spaceAround,
-              fieldStyle: FieldStyle.underline,
-              onCompleted: (pin) {
-                setState(() {
-                  _otp = pin;
-                });
-              },
-            ),
             const SizedBox(height: 20.0),
             ElevatedButton(onPressed: () => _validatePhone(), child: const Text('Verify Phone')),
           ],

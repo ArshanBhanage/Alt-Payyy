@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/customer/qr_scanner.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -10,8 +11,32 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
 
-  void _submit(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Scanner()));
+  String _scanBarcode = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> scanQR() async {
+    String barcodeScanRes;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+      print(barcodeScanRes);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _scanBarcode = barcodeScanRes;
+    });
   }
 
   @override
@@ -32,7 +57,9 @@ class _DashboardState extends State<Dashboard> {
             const SizedBox(height: 20.0),
             const  Text('Our partner in United Kingdom is \nMonzo \nwww.monzo.com'),
             const SizedBox(height: 20.0),
-            ElevatedButton(onPressed: () => _submit(context), child: const Text('Scan QR & Pay')),                        
+            ElevatedButton(
+                onPressed: () => scanQR(),
+                child: const Text('Scan QR & Pay')),                                    
           ],
         ),
       ),
