@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'pages/customer/customer_home.dart';
-import 'pages/merchant/merchant_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/welcome': (context) => const HomePage(),
         '/customerhome': (context) => const CustomerHome(),
-        '/merchanthome': (context) => const MerchantHome(),
       },
     );
   }

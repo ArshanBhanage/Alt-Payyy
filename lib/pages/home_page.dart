@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/customer/customer_home.dart';
-import 'package:flutter_application_1/pages/merchant/merchant_home.dart';
+import 'package:flutter_application_1/pages/merchant/qr_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     // Navigate to merchant page
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MerchantHome()),
+      MaterialPageRoute(builder: (context) => const QRImage()),
     );
   }  
 
