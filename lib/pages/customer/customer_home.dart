@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/customer/signup_page.dart';
+import 'package:flutter_application_1/pages/customer/sign_up.dart';
 import 'package:flutter_application_1/pages/merchant/merchant_home.dart';
 
 class CustomerHome extends StatefulWidget {

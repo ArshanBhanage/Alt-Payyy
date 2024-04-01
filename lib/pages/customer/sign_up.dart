@@ -13,7 +13,7 @@ class _SignUpState extends State<SignUp> {
 
   String _selectedCountryCode = "+91"; // Default country code
   
-  TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   void _navigateToPhoneValidation(BuildContext context, String phoneNumber) {
     // Navigate to customer page
