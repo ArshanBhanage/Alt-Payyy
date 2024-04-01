@@ -17,6 +17,12 @@ class _EnterNameState extends State<EnterName> {
 
   void saveName(){
     print("Name: ${_nameController.text}");
+
+    if(_nameController.text.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please enter a valid name')));
+      return;
+    }
+
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => IssuePartner(name: _nameController.text, phone: widget.data)));
   }
 

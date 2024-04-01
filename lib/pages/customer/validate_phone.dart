@@ -16,7 +16,13 @@ class _ValidatePhoneState extends State<ValidatePhone> {
   String _otp = "";
 
   void  _validatePhone(){
-    print("Hello: $_otp");
+    print("OTP: $_otp");
+
+    if(_otp.length != 4){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please enter a valid OTP')));
+      return;
+    }
+
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EnterName(data: widget.data)));
   }
 
@@ -49,7 +55,7 @@ class _ValidatePhoneState extends State<ValidatePhone> {
             const SizedBox(height: 20.0),  
             Flexible(
               child: OTPTextField(
-                  length: 5,
+                  length: 4,
                   width: MediaQuery.of(context).size.width,
                   style: const TextStyle(
                     fontSize: 17

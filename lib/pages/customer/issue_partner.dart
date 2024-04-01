@@ -14,7 +14,7 @@ class IssuePartner extends StatefulWidget {
 class _IssuePartnerState extends State<IssuePartner> {
 
   void _credentialsPage(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CredentialSetup(phone: widget.phone)));
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CredentialSetup(name: widget.name ,phone: widget.phone)));
   }
 
   @override

@@ -17,6 +17,13 @@ class _SignUpState extends State<SignUp> {
 
   void _navigateToPhoneValidation(BuildContext context, String phoneNumber) {
     // Navigate to customer page
+    print('Phone: ${_phoneNumberController.text}');
+
+    if(_phoneNumberController.text.length != 10){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please enter a valid phone number')));
+      return;
+    }
+
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ValidatePhone(data: phoneNumber)),

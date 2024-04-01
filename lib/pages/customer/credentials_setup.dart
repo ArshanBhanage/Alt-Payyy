@@ -3,9 +3,9 @@ import 'package:flutter_application_1/pages/customer/validate_credentials.dart';
 
 class CredentialSetup extends StatefulWidget {
 
-  final String phone;
+  final String name, phone;
 
-  const CredentialSetup({super.key, required this.phone});
+  const CredentialSetup({super.key, required this.name, required this.phone});
 
   @override
   State<CredentialSetup> createState() => _CredentialSetupState();
@@ -14,7 +14,8 @@ class CredentialSetup extends StatefulWidget {
 class _CredentialSetupState extends State<CredentialSetup> {
 
   void _submit(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const ValidateCredentials()));
+
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ValidateCredentials(name: widget.name ,phone: widget.phone)));
   }
 
   @override
@@ -30,7 +31,7 @@ class _CredentialSetupState extends State<CredentialSetup> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text('Ash Chandler'),
+            Text('Dear ${widget.name}, Welcome to Alt-Pay'),
             TextField(
               readOnly: true,
               controller: TextEditingController(text: widget.phone),
@@ -40,6 +41,7 @@ class _CredentialSetupState extends State<CredentialSetup> {
             const SizedBox(height: 20.0),                            
             const Text('IBAN No:'),            
             TextField(
+              readOnly: true,
               controller: TextEditingController(text: widget.phone),
               ),
             const SizedBox(height: 20.0),
@@ -47,11 +49,13 @@ class _CredentialSetupState extends State<CredentialSetup> {
             const SizedBox(height: 20.0),            
             const Text('Banking Routing No:'),
             TextField(
+              readOnly: true,
               controller: TextEditingController(text: widget.phone),
               ),
             const SizedBox(height: 20.0),
             const Text('Account No:'),
             TextField(
+              readOnly: true,
               controller: TextEditingController(text: widget.phone),
               ),
             const SizedBox(height: 20.0), 
