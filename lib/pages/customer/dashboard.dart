@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/customer/qr_scanner.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -10,7 +11,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   void _submit(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Scanner()));
   }
 
   @override
