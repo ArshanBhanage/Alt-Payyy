@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/customer/password_setup.dart';
 
 class ValidateComplete extends StatefulWidget {
-  const ValidateComplete({super.key});
+
+  final String name, phone;
+  const ValidateComplete({super.key, required this.name, required this.phone});
 
   @override
   State<ValidateComplete> createState() => _ValidateCompleteState();
@@ -11,7 +13,7 @@ class ValidateComplete extends StatefulWidget {
 class _ValidateCompleteState extends State<ValidateComplete> {
 
   void _submit(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const PasswordSetup()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordSetup(name: widget.name ,phone: widget.phone)));
   }
 
   @override
@@ -27,10 +29,10 @@ class _ValidateCompleteState extends State<ValidateComplete> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text('Ash Chandler'),
+            Text('Dear ${widget.name}, Welcoe to Alt-Pay'),
             TextField(
               readOnly: true,
-              controller: TextEditingController(text: 'abcd'),
+              controller: TextEditingController(text: '${widget.phone}'),
               ),
             const SizedBox(height: 20.0),
             const Text('Partner: Monzo'),

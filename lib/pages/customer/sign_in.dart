@@ -19,6 +19,10 @@ class _SignInState extends State<SignIn> {
   void _submit(BuildContext context){
     print('Phone: ${_phoneNumberController.text}');
     print('Password: ${_password.text}');
+    if(_phoneNumberController.text.isEmpty || _password.text.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please fill all fields')));
+      return;
+    }
     Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
   }
 

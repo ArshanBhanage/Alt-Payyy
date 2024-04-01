@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/customer/sign_in.dart';
 
 class PasswordSetup extends StatefulWidget {
-  const PasswordSetup({super.key});
+
+  final String name, phone;
+  const PasswordSetup({super.key, required this.name, required this.phone});
 
   @override
   State<PasswordSetup> createState() => _PasswordSetupState();
@@ -15,7 +17,27 @@ class _PasswordSetupState extends State<PasswordSetup> {
 
   void _submit(BuildContext context){
     print(_password.text == _cpassword.text);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignIn()));
+    if(_password.text == _cpassword.text && _password.text.isNotEmpty && _cpassword.text.isNotEmpty){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignIn()));
+    }
+    else if(_password.text.isEmpty != _cpassword.text.isEmpty){
+      showDialog(context: context, builder: (context) => AlertDialog(
+        title: const Text('Error'),
+        content: const Text('Passwords do not match'),
+        actions: <Widget>[
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))
+        ],
+      ));
+    }
+    else{
+      showDialog(context: context, builder: (context) => AlertDialog(
+        title: const Text('Error'),
+        content: const Text('Passwords cannot be empty'),
+        actions: <Widget>[
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))
+        ],
+      ));
+    }
   }
 
   @override
@@ -31,10 +53,10 @@ class _PasswordSetupState extends State<PasswordSetup> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text('Ash Chandler'),
+            Text('${widget.name}'),
             TextField(
               readOnly: true,
-              controller: TextEditingController(text: 'abcd'),
+              controller: TextEditingController(text: '${widget.phone}'),
               ),
             const SizedBox(height: 20.0),
             const Text('Password'),

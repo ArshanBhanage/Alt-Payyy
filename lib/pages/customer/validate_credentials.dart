@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/customer/validate_complete.dart';
 
 class ValidateCredentials extends StatefulWidget {
-  const ValidateCredentials({super.key});
+
+  final String name, phone;
+  const ValidateCredentials({super.key, required this.name, required this.phone});
 
   @override
   State<ValidateCredentials> createState() => _ValidateCredentialsState();
@@ -11,7 +13,7 @@ class ValidateCredentials extends StatefulWidget {
 class _ValidateCredentialsState extends State<ValidateCredentials> {
 
   void _validate(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const ValidateComplete()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ValidateComplete(name: widget.name ,phone: widget.phone)));
   }
 
   @override
@@ -27,10 +29,10 @@ class _ValidateCredentialsState extends State<ValidateCredentials> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text('Ash Chandler'),
+            Text('Dear ${widget.name}, Welcome to Alt-Pay'),
             TextField(
               readOnly: true,
-              controller: TextEditingController(text: 'abcd'),
+              controller: TextEditingController(text: '${widget.phone}'),
               ),
             const SizedBox(height: 20.0),
             const Text('Partner: Monzo'),
